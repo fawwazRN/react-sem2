@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Tugas from "./tugas5/Tugas";
+import NoteApp from "./NoteApp";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Tugas />
+    <NoteApp />
   </StrictMode>,
 );

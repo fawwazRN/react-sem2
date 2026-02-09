@@ -1,9 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Tugas from "./tugas5/Tugas";
+import "../index.css";
+import Counter from "./Counter";
+import CounterApp from "./CounterApp";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Tugas />
+    <CounterApp />
   </StrictMode>,
 );

@@ -1,0 +1,69 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  color: #242424;
+}
+
+.tabel {
+  width: 100%;
+  margin-top: 20px;
+  background: whitesmoke;
+}
+.tabel th {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+.tabel td {
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+.tabel tr:hover {
+  background: #afafaf;
+  transition: all;
+  transition-duration: 300ms ease-in-out;
+}
+
+button {
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 300ms ease-in-out;
+  margin: 0 5px;
+}
+.btn-edit {
+  background: goldenrod;
+  color: #000;
+}
+.btn-save {
+  background: green;
+  color: #fff;
+}
+.btn-delete {
+  background: red;
+  color: #fff;
+}
+button:hover {
+  transform: translateY(-2px);
+}
+
+input {
+  width: 90%;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.submit {
+  margin-top: 20px;
+}
