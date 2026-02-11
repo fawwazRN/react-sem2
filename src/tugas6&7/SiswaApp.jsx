@@ -1,7 +1,8 @@
 import { useImmerReducer } from "use-immer";
-import FormSiswa from "./formSiswa";
 import DataSiswa from "./DataSiswa";
 import "./siswa.css";
+import FormSiswa from "./FormSiswa";
+import { SiswaContext, SiswaDispatchContext } from "./SiswaContext";
 
 const initialDataSiswa = [];
 let nextId = 1;
@@ -25,42 +26,18 @@ function dataSiswaReducer(dataSiswa, action) {
 }
 
 export default function SiswaApp() {
-  const [dataSiswa, dispatch] = useImmerReducer(
-    dataSiswaReducer,
-    initialDataSiswa,
-  );
-
-  function handleAddSiswa(data) {
-    dispatch({
-      type: "ADD_SISWA",
-      ...data,
-    });
-  }
-  function handleChangeSiswa(siswa) {
-    dispatch({
-      type: "CHANGE_SISWA",
-      id: siswa.id,
-      nama: siswa.nama,
-      usia: siswa.usia,
-      kelas: siswa.kelas,
-    });
-  }
-  function handleDeleteSiswa(id) {
-    dispatch({
-      type: "DELETE_SISWA",
-      id: id,
-    });
-  }
-
+  const [siswa, dispatch] = useImmerReducer(dataSiswaReducer, initialDataSiswa);
   return (
     <div className="container">
-      <h1>data siswa</h1>
-      <FormSiswa onAddSiswa={handleAddSiswa} />
-      <DataSiswa
-        dataSiswa={dataSiswa}
-        onChange={handleChangeSiswa}
-        onDelete={handleDeleteSiswa}
-      />
+      <SiswaContext.Provider value={siswa}>
+        <SiswaDispatchContext.Provider value={dispatch}>
+          <h1>
+            Siswa app <i>tapi pakai context</i>
+          </h1>
+          <FormSiswa />
+          <DataSiswa />
+        </SiswaDispatchContext.Provider>
+      </SiswaContext.Provider>
     </div>
   );
 }

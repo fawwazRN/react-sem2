@@ -15,6 +15,7 @@ export default defineConfig({
         counter: "counter.html",
         note: "note.html",
         siswa: "siswa.html",
+        profile: "profile.html",
       },
     },
   },

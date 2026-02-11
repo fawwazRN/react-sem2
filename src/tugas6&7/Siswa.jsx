@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SiswaDispatchContext } from "./SiswaContext";
 
-export default function Siswa({ noUrut, siswa, onChange, onDelete }) {
+export default function Siswa({ noUrut, siswa }) {
   const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useContext(SiswaDispatchContext);
 
   function handleChangeText(e) {
-    onChange({
+    dispatch({
+      type: "CHANGE_SISWA",
       ...siswa,
       [e.target.name]: e.target.value,
+    });
+  }
+
+  function handleDelete() {
+    dispatch({
+      type: "DELETE_SISWA",
+      id: siswa.id,
     });
   }
 
@@ -45,7 +55,7 @@ export default function Siswa({ noUrut, siswa, onChange, onDelete }) {
               Edit
             </button>
           )}
-          <button className="btn-delete" onClick={() => onDelete(siswa.id)}>
+          <button className="btn-delete" onClick={handleDelete}>
             Hapus
           </button>
         </div>

@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Siswa from "./Siswa";
+import { SiswaContext } from "./SiswaContext";
 
-export default function DataSiswa({ dataSiswa, onChange, onDelete }) {
+export default function DataSiswa() {
+  const siswas = useContext(SiswaContext);
   return (
     <table className="tabel">
       <thead>
@@ -13,14 +16,9 @@ export default function DataSiswa({ dataSiswa, onChange, onDelete }) {
         </tr>
       </thead>
       <tbody>
-        {dataSiswa.map((siswa, index) => (
+        {siswas.map((siswa, index) => (
           <tr key={siswa.id}>
-            <Siswa
-              noUrut={index + 1}
-              siswa={siswa}
-              onChange={onChange}
-              onDelete={onDelete}
-            />
+            <Siswa noUrut={index + 1} siswa={siswa} />
           </tr>
         ))}
       </tbody>

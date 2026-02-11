@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { useImmer } from "use-immer";
+import { SiswaDispatchContext } from "./SiswaContext";
 
-export default function FormSiswa({ onAddSiswa }) {
+export default function FormSiswa() {
   const [dataSiswa, setDataSiswa] = useImmer({
     nama: "",
     usia: "",
     kelas: "",
   });
+  const dispatch = useContext(SiswaDispatchContext);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -16,7 +19,7 @@ export default function FormSiswa({ onAddSiswa }) {
 
   function handleClick(e) {
     e.preventDefault();
-    onAddSiswa(dataSiswa);
+    dispatch({ type: "ADD_SISWA", ...dataSiswa });
     console.log(dataSiswa);
     setDataSiswa((draft) => {
       draft.nama = "";
